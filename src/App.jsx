@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { BottomNav } from './components/BottomNav';
-import { ShubuhatSection } from './components/ShubuhatSection';
-import { AzkarSection } from './components/AzkarSection';
+import { HomeSection } from './components/HomeSection';
 import { TasbihSection } from './components/TasbihSection';
+import { QiblaSection } from './components/QiblaSection';
+import { AzkarSection } from './components/AzkarSection';
 import { PrayerSection } from './components/PrayerSection';
+import { ShubuhatSection } from './components/ShubuhatSection';
 import { WaqfSection } from './components/WaqfSection';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('shubuhat');
+  const [activeTab, setActiveTab] = useState('home');
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem('noor_theme');
     if (saved) return saved === 'dark';
@@ -33,18 +35,22 @@ export default function App() {
 
   const renderContent = () => {
     switch (activeTab) {
-      case 'shubuhat':
-        return <ShubuhatSection fontSize={fontSize} />;
-      case 'azkar':
-        return <AzkarSection fontSize={fontSize} />;
+      case 'home':
+        return <HomeSection setActiveTab={setActiveTab} />;
       case 'tasbih':
         return <TasbihSection fontSize={fontSize} />;
+      case 'qibla':
+        return <QiblaSection />;
+      case 'azkar':
+        return <AzkarSection fontSize={fontSize} />;
       case 'prayer':
         return <PrayerSection />;
+      case 'shubuhat':
+        return <ShubuhatSection fontSize={fontSize} />;
       case 'waqf':
         return <WaqfSection />;
       default:
-        return <ShubuhatSection fontSize={fontSize} />;
+        return <HomeSection setActiveTab={setActiveTab} />;
     }
   };
 
@@ -56,6 +62,7 @@ export default function App() {
           setDarkMode={setDarkMode}
           fontSize={fontSize}
           setFontSize={setFontSize}
+          setActiveTab={setActiveTab}
         />
 
         <main className="main-content-scroll">

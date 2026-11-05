@@ -1,7 +1,7 @@
 import React from 'react';
-import { SunIcon, MoonIcon } from './Icons';
+import { SunIcon, MoonIcon, WaqfIcon, SparklesIcon } from './Icons';
 
-export function Header({ darkMode, setDarkMode, fontSize, setFontSize }) {
+export function Header({ darkMode, setDarkMode, fontSize, setFontSize, setActiveTab }) {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
@@ -17,32 +17,48 @@ export function Header({ darkMode, setDarkMode, fontSize, setFontSize }) {
   return (
     <header className="header-container">
       <div className="header-content">
-        <div className="header-title-box">
-          <div className="app-badge">باقیات و صالحات</div>
-          <h1 className="header-title">نور الإیمان</h1>
-          <p className="header-subtitle">اذکار نبوی و رد شبهات ملحدین (استاد محمد قطب)</p>
+        <div className="header-title-box" onClick={() => setActiveTab('home')} style={{ cursor: 'pointer' }}>
+          <div className="header-title-row">
+            <span className="header-crescent">🌙</span>
+            <h1 className="header-title">نور الإیمان</h1>
+          </div>
+          <p className="header-subtitle">اذکار، تسبیح، قبله‌نما و باقیات الصالحات</p>
         </div>
 
         <div className="header-actions">
-          {/* تغییر اندازه فونت برای راحتی مطالعه */}
+          {/* دکمه لوح وقف و باقیات الصالحات */}
+          <button
+            onClick={() => setActiveTab('waqf')}
+            className="header-waqf-pill"
+            title="مشاهده لوح وقف و اهدای ثواب"
+          >
+            <WaqfIcon className="w-4 h-4 text-amber-300" />
+            <span className="waqf-pill-text">وقف</span>
+          </button>
+
+          {/* تغییر اندازه قلم */}
           <div className="font-resizer" title="تغییر اندازه قلم">
-            <button onClick={decreaseFont} className="icon-btn" aria-label="کوچک‌تر">
-              <span>الف-</span>
+            <button onClick={decreaseFont} className="icon-btn font-btn" aria-label="کوچک‌تر">
+              <span>-</span>
             </button>
             <span className="font-size-label">{fontSize}</span>
-            <button onClick={increaseFont} className="icon-btn" aria-label="بزرگ‌تر">
-              <span>الف+</span>
+            <button onClick={increaseFont} className="icon-btn font-btn" aria-label="بزرگ‌تر">
+              <span>+</span>
             </button>
           </div>
 
-          {/* تغییر تم شب و روز */}
+          {/* تغییر حالت شب و روز */}
           <button
             onClick={toggleDarkMode}
             className="icon-btn theme-toggle"
             aria-label="تغییر حالت شب/روز"
             title={darkMode ? 'حالت روز' : 'حالت شب'}
           >
-            {darkMode ? <SunIcon className="w-5 h-5 text-amber-400" /> : <MoonIcon className="w-5 h-5 text-emerald-700" />}
+            {darkMode ? (
+              <SunIcon className="w-5 h-5 text-amber-300" />
+            ) : (
+              <MoonIcon className="w-5 h-5 text-amber-200" />
+            )}
           </button>
         </div>
       </div>

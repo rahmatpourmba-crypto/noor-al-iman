@@ -1,13 +1,13 @@
 import React from 'react';
-import { ShieldIcon, BookOpenIcon, TasbihIcon, PrayerIcon, WaqfIcon } from './Icons';
+import { HomeIcon, TasbihIcon, CompassIcon, BookOpenIcon, ShieldIcon } from './Icons';
 
 export function BottomNav({ activeTab, setActiveTab }) {
   const tabs = [
+    { id: 'home', label: 'خانه', icon: HomeIcon },
+    { id: 'tasbih', label: 'تسبیح', icon: TasbihIcon },
+    { id: 'qibla', label: 'قبله‌نما', icon: CompassIcon },
+    { id: 'azkar', label: 'اذکار نبوی', icon: BookOpenIcon },
     { id: 'shubuhat', label: 'رد شبهات', icon: ShieldIcon },
-    { id: 'azkar', label: 'حصن المسلم', icon: BookOpenIcon },
-    { id: 'tasbih', label: 'تسبیح‌شمار', icon: TasbihIcon },
-    { id: 'prayer', label: 'اوقات شرعی', icon: PrayerIcon },
-    { id: 'waqf', label: 'وقف و دعا', icon: WaqfIcon },
   ];
 
   return (
@@ -21,6 +21,7 @@ export function BottomNav({ activeTab, setActiveTab }) {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`nav-tab-item ${isActive ? 'active' : ''}`}
+              aria-label={tab.label}
             >
               <div className="nav-icon-wrapper">
                 <Icon className={`nav-icon ${isActive ? 'scale-110' : ''}`} />

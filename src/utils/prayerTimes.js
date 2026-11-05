@@ -6,20 +6,26 @@ export const CITIES = [
   { name: 'سنندج', lat: 35.3219, lng: 46.9862, province: 'کردستان' },
   { name: 'گرگان', lat: 36.8427, lng: 54.4439, province: 'گلستان' },
   { name: 'گنبد کاووس', lat: 37.2500, lng: 55.1672, province: 'گلستان' },
+  { name: 'پیرانشهر', lat: 36.7011, lng: 45.1414, province: 'آذربایجان غربی' },
+  { name: 'مهاباد', lat: 36.7631, lng: 45.7222, province: 'آذربایجان غربی' },
+  { name: 'سقز', lat: 36.2499, lng: 46.2734, province: 'کردستان' },
+  { name: 'بانه', lat: 35.9975, lng: 45.8853, province: 'کردستان' },
+  { name: 'مریوان', lat: 35.5269, lng: 46.1760, province: 'کردستان' },
+  { name: 'پاوه', lat: 35.0434, lng: 46.3565, province: 'کرمانشاه' },
   { name: 'چابهار', lat: 25.2919, lng: 60.6430, province: 'سیستان و بلوچستان' },
   { name: 'بندرعباس', lat: 27.1832, lng: 56.2666, province: 'هرمزگان' },
-  { name: 'سقز', lat: 36.2499, lng: 46.2734, province: 'کردستان' },
-  { name: 'مهاباد', lat: 36.7631, lng: 45.7222, province: 'آذربایجان غربی' },
   { name: 'تایباد', lat: 34.7400, lng: 60.7756, province: 'خراسان رضوی' },
   { name: 'خواف', lat: 34.5778, lng: 60.1417, province: 'خراسان رضوی' },
   { name: 'ایرانشهر', lat: 27.2025, lng: 60.6848, province: 'سیستان و بلوچستان' },
-  { name: 'بانه', lat: 35.9975, lng: 45.8853, province: 'کردستان' },
   { name: 'ارومیه', lat: 37.5527, lng: 45.0761, province: 'آذربایجان غربی' },
   { name: 'تهران', lat: 35.6892, lng: 51.3890, province: 'تهران' },
   { name: 'مشهد', lat: 36.2972, lng: 59.6067, province: 'خراسان رضوی' },
   { name: 'شیراز', lat: 29.5918, lng: 52.5837, province: 'فارس' },
   { name: 'اصفهان', lat: 32.6546, lng: 51.6680, province: 'اصفهان' },
   { name: 'تبریز', lat: 38.0800, lng: 46.2919, province: 'آذربایجان شرقی' },
+  { name: 'کرمانشاه', lat: 34.3277, lng: 47.0778, province: 'کرمانشاه' },
+  { name: 'بوشهر', lat: 28.9234, lng: 50.8203, province: 'بوشهر' },
+  { name: 'اهواز', lat: 31.3183, lng: 48.6706, province: 'خوزستان' },
 ];
 
 function degToRad(deg) {
@@ -111,4 +117,32 @@ export function calculatePrayerTimes(lat, lng, date = new Date(), fiqh = 'hanafi
     isha: formatTime(ishaTime),
     fiqhUsed: fiqh === 'hanafi' ? 'فقه حنفی (عصر با سایه ۲ برابر)' : 'فقه شافعی / جمهور (عصر با سایه ۱ برابر)'
   };
+}
+
+// مختصات دقیق کعبه مشرفه در مکه مکرمه
+export const MECCA = { lat: 21.422487, lng: 39.826206 };
+
+export function calculateQibla(lat, lng) {
+  const latM = degToRad(MECCA.lat);
+  const lngM = degToRad(MECCA.lng);
+  const latR = degToRad(lat);
+  const lngR = degToRad(lng);
+  const dLng = lngM - lngR;
+
+  const y = Math.sin(dLng);
+  const x = Math.cos(latR) * Math.tan(latM) - Math.sin(latR) * Math.cos(dLng);
+  let qibla = radToDeg(Math.atan2(y, x));
+  return Math.round(((qibla + 360) % 360) * 10) / 10;
+}
+
+export function calculateMeccaDistance(lat, lng) {
+  const R = 6371; // شعاع کره زمین به کیلومتر
+  const dLat = degToRad(MECCA.lat - lat);
+  const dLng = degToRad(MECCA.lng - lng);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(degToRad(lat)) * Math.cos(degToRad(MECCA.lat)) *
+    Math.sin(dLng / 2) * Math.sin(dLng / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return Math.round(R * c);
 }
