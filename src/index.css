@@ -1,0 +1,1157 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Tahoma, Arial, sans-serif;
+  
+  /* تم روشن (Light Theme) */
+  --bg-page: #f1f5f9;
+  --bg-shell: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-subtle: #f8fafc;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --text-dim: #94a3b8;
+  
+  --primary: #059669;
+  --primary-hover: #047857;
+  --primary-light: #ecfdf5;
+  --primary-border: #a7f3d0;
+  
+  --gold: #d97706;
+  --gold-light: #fef3c7;
+  
+  --border: #e2e8f0;
+  --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.08), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+}
+
+.dark {
+  /* تم شب (Dark Theme) */
+  --bg-page: #0b1120;
+  --bg-shell: #0f172a;
+  --bg-card: #1e293b;
+  --bg-card-subtle: #172033;
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-dim: #64748b;
+  
+  --primary: #10b981;
+  --primary-hover: #34d399;
+  --primary-light: #064e3b;
+  --primary-border: #047857;
+  
+  --gold: #fbbf24;
+  --gold-light: #451a03;
+  
+  --border: #334155;
+  --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-family);
+  direction: rtl;
+  text-align: right;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ساختار کلی برای گوشی و دسکتاپ */
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: var(--bg-page);
+  transition: background-color 0.3s ease;
+}
+
+.mobile-shell {
+  width: 100%;
+  max-width: 520px;
+  min-height: 100vh;
+  background-color: var(--bg-shell);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+}
+
+/* سربرگ (Header) */
+.header-container {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: linear-gradient(135deg, #064e3b 0%, #047857 50%, #059669 100%);
+  color: #ffffff;
+  padding: 1rem 1.25rem 0.85rem;
+  box-shadow: 0 4px 15px rgba(4, 120, 87, 0.2);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-badge {
+  display: inline-block;
+  background: rgba(251, 191, 36, 0.2);
+  border: 1px solid rgba(251, 191, 36, 0.5);
+  color: #fef08a;
+  font-size: 0.68rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.header-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.header-subtitle {
+  font-size: 0.76rem;
+  color: #a7f3d0;
+  margin-top: 0.1rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.font-resizer {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  padding: 0.15rem 0.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.font-size-label {
+  font-size: 0.72rem;
+  font-weight: bold;
+  padding: 0 0.35rem;
+  color: #ffffff;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 0.35rem;
+  cursor: pointer;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  width: 36px;
+  height: 36px;
+}
+
+/* اسکرول محتوای اصلی */
+.main-content-scroll {
+  flex: 1;
+  padding: 1rem 1rem 6.5rem; /* فاصله پایین برای نوار ناوبری */
+  overflow-y: auto;
+}
+
+.section-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* نوار پایین (Bottom Navigation) */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.bottom-nav-inner {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 520px;
+  background-color: var(--bg-card);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-around;
+  padding: 0.4rem 0.5rem calc(0.4rem + env(safe-area-inset-bottom, 0px));
+}
+
+.nav-tab-item {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem 0.5rem;
+  color: var(--text-dim);
+  transition: all 0.2s ease;
+  position: relative;
+  font-family: inherit;
+  flex: 1;
+}
+
+.nav-icon-wrapper {
+  margin-bottom: 0.15rem;
+}
+
+.nav-icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  transition: transform 0.2s ease;
+}
+
+.nav-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.nav-tab-item.active {
+  color: var(--primary);
+}
+
+.nav-tab-item.active .nav-label {
+  font-weight: 700;
+}
+
+.nav-active-pill {
+  position: absolute;
+  top: 0;
+  width: 20px;
+  height: 3px;
+  background-color: var(--primary);
+  border-radius: 9999px;
+}
+
+/* کارت‌های معرفی و بنرها */
+.author-intro-card,
+.azkar-intro-card,
+.waqf-banner-card {
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--bg-card-subtle) 100%);
+  border: 1px solid var(--primary-border);
+  border-radius: 1rem;
+  padding: 1rem 1.15rem;
+  box-shadow: var(--shadow);
+}
+
+.author-intro-card {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+
+.author-icon-box {
+  background: var(--bg-card);
+  padding: 0.6rem;
+  border-radius: 0.85rem;
+  box-shadow: var(--shadow);
+}
+
+.author-title,
+.azkar-header-title,
+.waqf-banner-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.35rem;
+}
+
+.author-desc,
+.azkar-header-sub,
+.waqf-banner-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* نوار جستجو و فیلتر */
+.search-bar-row {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.search-icon {
+  position: absolute;
+  right: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--text-dim);
+}
+
+.search-input {
+  width: 100%;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  padding: 0.65rem 2.5rem 0.65rem 2rem;
+  font-family: inherit;
+  font-size: 0.88rem;
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+}
+
+.clear-search-btn {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.bookmark-filter-btn {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  padding: 0.5rem 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.bookmark-filter-btn.active {
+  background-color: var(--gold-light);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.bookmark-count {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* نوار افقی دسته‌بندی‌ها */
+.category-scroll,
+.azkar-tabs-scroll {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.35rem;
+  scrollbar-width: none;
+}
+
+.category-scroll::-webkit-scrollbar,
+.azkar-tabs-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.category-pill,
+.azkar-tab-btn {
+  flex-shrink: 0;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  padding: 0.45rem 0.95rem;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s;
+}
+
+.category-pill.active,
+.azkar-tab-btn.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+}
+
+.results-count {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+/* کارت‌های سوال و جواب (Q&A Cards) */
+.qna-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.qna-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.qna-card.expanded {
+  border-color: var(--primary-border);
+  box-shadow: var(--shadow-lg);
+}
+
+.qna-header {
+  padding: 1.05rem 1.15rem;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.85rem;
+}
+
+.qna-header-main {
+  flex: 1;
+}
+
+.qna-badge {
+  display: inline-block;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.qna-question {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text-main);
+}
+
+.qna-summary {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  margin-top: 0.45rem;
+  line-height: 1.45;
+}
+
+.qna-body {
+  border-top: 1px solid var(--border);
+  padding: 1.15rem;
+  background-color: var(--bg-card-subtle);
+}
+
+.qna-answer-text {
+  color: var(--text-main);
+  line-height: 1.8;
+}
+
+.qna-paragraph {
+  margin-bottom: 0.85rem;
+}
+
+.qna-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.qna-reference-box {
+  margin-top: 1rem;
+  padding: 0.65rem 0.85rem;
+  background-color: var(--bg-card);
+  border-right: 3px solid var(--gold);
+  border-radius: 0.4rem;
+  font-size: 0.78rem;
+}
+
+.ref-label {
+  font-weight: 700;
+  color: var(--gold);
+  margin-left: 0.35rem;
+}
+
+.ref-text {
+  color: var(--text-muted);
+}
+
+.qna-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed var(--border);
+}
+
+.action-btn {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  padding: 0.4rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s;
+}
+
+.action-btn:hover {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary-border);
+}
+
+.action-btn.bookmarked {
+  background-color: var(--gold-light);
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.action-btn.share-btn {
+  margin-right: auto; /* هدایت به انتهای ردیف */
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary-border);
+  font-weight: 600;
+}
+
+/* کارت‌های اذکار */
+.azkar-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.azkar-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 1.15rem;
+  padding: 1.15rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.azkar-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.benefit-badge {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  background-color: var(--bg-card-subtle);
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--border);
+}
+
+.target-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.azkar-arabic-text {
+  font-family: 'Amiri', 'Traditional Arabic', 'Vazirmatn', serif;
+  font-weight: 700;
+  line-height: 2.1;
+  color: #065f46;
+  text-align: justify;
+  background-color: var(--primary-light);
+  padding: 1rem;
+  border-radius: 0.85rem;
+  border: 1px dashed var(--primary-border);
+}
+
+.dark .azkar-arabic-text {
+  color: #6ee7b7;
+}
+
+.azkar-persian-text {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.azkar-counter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.azkar-count-btn {
+  flex: 1;
+  background-color: var(--primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 0.85rem;
+  padding: 0.65rem 1rem;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+  transition: all 0.15s ease;
+}
+
+.azkar-count-btn:active {
+  transform: scale(0.97);
+}
+
+.azkar-count-btn.completed {
+  background-color: #059669;
+  cursor: default;
+}
+
+.count-number {
+  font-size: 1.1rem;
+}
+
+.azkar-side-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.icon-action-btn {
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  padding: 0.55rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 5px;
+  background-color: var(--border);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(to left, var(--primary), var(--gold));
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+/* بخش تسبیح‌شمار هوشمند */
+.tasbih-container {
+  align-items: center;
+}
+
+.tasbih-dhikr-card {
+  width: 100%;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 1.15rem;
+  padding: 1.15rem;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.field-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.45rem;
+}
+
+.dhikr-select {
+  width: 100%;
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.6rem 0.85rem;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+  outline: none;
+}
+
+.active-dhikr-arabic {
+  margin-top: 0.85rem;
+  color: var(--primary);
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+.tasbih-interactive-area {
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.tasbih-tap-button {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--bg-card) 60%, var(--bg-card-subtle) 100%);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  box-shadow: var(--shadow-lg), 0 0 30px rgba(5, 150, 105, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease;
+}
+
+.tasbih-tap-button:active {
+  transform: scale(0.96);
+}
+
+.tasbih-svg-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ring-bg {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 6;
+}
+
+.ring-progress {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 326.7;
+  transition: stroke-dashoffset 0.2s ease;
+}
+
+.tasbih-center-text {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tasbih-count-val {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.tasbih-target-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+}
+
+.tasbih-tap-hint {
+  font-size: 0.72rem;
+  color: var(--gold);
+  font-weight: 600;
+  margin-top: 0.5rem;
+  background: var(--gold-light);
+  padding: 0.15rem 0.6rem;
+  border-radius: 9999px;
+}
+
+.tasbih-controls-box {
+  width: 100%;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 1.15rem;
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.target-pills-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.control-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.target-pill {
+  flex: 1;
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  padding: 0.4rem 0.2rem;
+  font-family: inherit;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.target-pill.active {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.tasbih-settings-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.toggle-setting-btn {
+  flex: 1;
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.toggle-setting-btn.active {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary-border);
+}
+
+.reset-counter-btn {
+  background-color: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  border-radius: 0.65rem;
+  padding: 0.5rem 0.85rem;
+  font-family: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 600;
+}
+
+.dark .reset-counter-btn {
+  background-color: #450a0a;
+  border-color: #7f1d1d;
+  color: #f87171;
+}
+
+.tasbih-total-badge {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  border-top: 1px dashed var(--border);
+  padding-top: 0.65rem;
+}
+
+/* اوقات شرعی (Prayer Times) */
+.prayer-header-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 1.15rem;
+  padding: 1.15rem;
+  box-shadow: var(--shadow);
+}
+
+.prayer-city-select-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.prayer-select {
+  width: 100%;
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.6rem 0.85rem;
+  font-family: inherit;
+  font-size: 0.88rem;
+  color: var(--text-main);
+  outline: none;
+}
+
+.fiqh-toggle-group {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.fiqh-btn {
+  flex: 1;
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.fiqh-btn.active {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  font-weight: 700;
+}
+
+.prayer-current-clock {
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.prayer-times-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+
+.prayer-time-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 0.95rem;
+  padding: 0.85rem 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  box-shadow: var(--shadow);
+}
+
+.prayer-time-icon {
+  font-size: 1.5rem;
+}
+
+.prayer-time-info {
+  flex: 1;
+}
+
+.prayer-time-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.prayer-time-desc {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.prayer-time-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--primary);
+  font-family: monospace, var(--font-family);
+  direction: ltr;
+}
+
+.prayer-note-box {
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  padding: 0.85rem 1rem;
+}
+
+.note-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 0.35rem;
+}
+
+.note-text {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* بخش وقف، دعا و باقیات الصالحات */
+.waqf-banner-card {
+  text-align: center;
+  padding: 1.5rem 1.15rem;
+}
+
+.waqf-icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  background-color: var(--gold-light);
+  border-radius: 50%;
+  margin-bottom: 0.75rem;
+}
+
+.hadith-ref {
+  display: inline-block;
+  font-size: 0.72rem;
+  color: var(--gold);
+  margin-top: 0.35rem;
+}
+
+.dedication-card,
+.reference-doc-card,
+.bazaar-policy-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 1.15rem;
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.dedication-title,
+.card-heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.dedication-intro {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.dedication-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.dedication-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  line-height: 1.6;
+  background-color: var(--bg-card-subtle);
+  padding: 0.75rem 0.95rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+}
+
+.bullet-star {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.ref-item {
+  margin-bottom: 0.85rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.ref-item strong {
+  display: block;
+  color: var(--text-main);
+  margin-bottom: 0.2rem;
+}
+
+.ref-item p {
+  color: var(--text-muted);
+}
+
+.policy-checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.policy-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.83rem;
+  color: var(--text-muted);
+}
+
+.closing-prayer {
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+  padding: 1rem;
+  font-family: 'Amiri', serif;
+}

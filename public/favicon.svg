@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" />
+      <stop offset="50%" stop-color="#047857" />
+      <stop offset="100%" stop-color="#065f46" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="50%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+  
+  <!-- پس‌زمینه گرد -->
+  <rect width="512" height="512" rx="120" fill="url(#bgGrad)" />
+  
+  <!-- حاشیه طلایی ظریف -->
+  <rect x="24" y="24" width="464" height="464" rx="96" fill="none" stroke="url(#goldGrad)" stroke-width="6" opacity="0.4" />
+  
+  <!-- هلال ماه و ستاره -->
+  <path d="M290 120 A100 100 0 1 0 350 280 A125 125 0 1 1 290 120 Z" fill="url(#goldGrad)" />
+  <polygon points="360,150 372,185 410,185 379,207 391,242 360,220 329,242 341,207 310,185 348,185" fill="#fef08a" />
+  
+  <!-- کتاب باز (نماد علم و ایمان) -->
+  <path d="M120 340 Q256 310 392 340 L392 380 Q256 350 120 380 Z" fill="#ffffff" opacity="0.9" />
+  <path d="M120 340 L120 380 Q256 350 256 310 Q256 350 392 380 L392 340 Q256 310 120 340 Z" fill="none" stroke="url(#goldGrad)" stroke-width="8" />
+  <line x1="256" y1="310" x2="256" y2="380" stroke="#047857" stroke-width="6" />
+</svg>

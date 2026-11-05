@@ -1,0 +1,19 @@
+{
+  "name": "نور الإیمان | اذکار و رد شبهات",
+  "short_name": "نور الإیمان",
+  "description": "گنجینه اذکار روزمره اهل سنت (حصن المسلم)، رد شبهات ملحدین و مادی‌گرایان (استاد محمد قطب)، تسبیح و اوقات شرعی آفلاین",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#064e3b",
+  "theme_color": "#047857",
+  "dir": "rtl",
+  "lang": "fa",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
