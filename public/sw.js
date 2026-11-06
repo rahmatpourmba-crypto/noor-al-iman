@@ -1,12 +1,14 @@
 // Service Worker for Noor Al-Iman (100% Offline Capability)
-const CACHE_NAME = 'noor-al-iman-v3';
+const CACHE_NAME = 'noor-al-iman-v4';
 
 const STATIC_ASSETS = [
   './',
   './index.html',
   './manifest.json',
   './favicon.svg',
-  './icons.svg'
+  './icons.svg',
+  './icon_192.png',
+  './icon_512.png'
 ];
 
 self.addEventListener('install', (event) => {
@@ -37,7 +39,6 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
-        // بروزرسانی در پس‌زمینه
         fetch(event.request)
           .then((networkResponse) => {
             if (networkResponse && networkResponse.status === 200) {
